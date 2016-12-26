@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<head>
+    <title>The Twitter Bubble</title>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src={{ url_for( 'static', filename='d3.js' ) }}></script>
+</head>
+
+<body>
+    <style>
+        body {
+            font-family: system, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Lucida Grande";
+            padding-top: 10px;
+        }
+        #messages {
+            width: 700px;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        #bubbles {
+            width: 700px;
+            margin-top: 10px;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+    <!-- Creates the form. -->
+    <div class="row">
+        <h3>Of Twitter and Bubbles.</h3>
+        <div class="row">
+            <form role="form" method="POST">
+                <input name="twitter_handle" type="text" placeholder="@">
+                <input id="button" type="submit" value="View Twitter Bubble" />
+            </form>
+        </div>
+    </div>
+
+    <div id="messages">
+    </div>
+
+    <div id="bubbles">
+    </div>
+
+    <div class="tooltip">
+    </div>
+
+    <script type="text/javascript" src={{ url_for( 'static', filename='app.js' ) }}></script>
+
+</body>
+
+</html>
